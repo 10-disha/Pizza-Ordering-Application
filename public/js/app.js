@@ -7,7 +7,12 @@
   \*****************************/
 /***/ (() => {
 
-console.log('hello from app js');
+var addToCart = document.querySelectorAll('.add-to-cart');
+addToCart.forEach(function (btn) {
+  btn.addEventListener('click', function (e) {
+    console.log(e);
+  });
+});
 
 /***/ }),
 
