@@ -1853,11 +1853,19 @@ var cartCounter = document.querySelector('#cartCounter');
 
 function updateCart(pizza) {
   axios__WEBPACK_IMPORTED_MODULE_0___default().post('/update-cart', pizza).then(function (res) {
-    console.log(res);
     cartCounter.innerText = res.data.totalQty;
     new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
       type: 'success',
-      text: 'Items added to cart'
+      timeout: 1000,
+      text: 'Item added to cart',
+      progressBar: false
+    }).show();
+  })["catch"](function (err) {
+    new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
+      type: 'error',
+      timeout: 1000,
+      text: 'Something went wrong',
+      progressBar: false
     }).show();
   });
 }
@@ -1867,7 +1875,7 @@ addToCart.forEach(function (btn) {
     var pizza = JSON.parse(btn.dataset.pizza);
     updateCart(pizza);
   });
-}); //object to string using json string
+});
 
 /***/ }),
 
